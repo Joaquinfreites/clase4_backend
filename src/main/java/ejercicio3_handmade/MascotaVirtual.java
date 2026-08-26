@@ -97,7 +97,7 @@ public class MascotaVirtual {
         // Además el humor se decrementa en un nivel.
         this.durmiendo = false;
         this.humor -= 1;
-
+        // hhhh
     }
 }
 /*
