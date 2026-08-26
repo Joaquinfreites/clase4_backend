@@ -21,7 +21,7 @@ public class MascotaVirtual {
         this.viva = viva;
     }
 
-    private void evaluarEstado(){
+   /* private void evaluarEstado(){
         if (this.energia <= 0){
             this.energia = 0;
             this.viva = false;
@@ -29,12 +29,13 @@ public class MascotaVirtual {
         if ( this.humor > 5){
             this.humor = 5;
         }
-
     }
+    */
 
     // DE INGESTA
 
-    public void comer(){
+
+public boolean comer(){
         // A partir de la 3 ingesta consecutiva el nivel de humor
         // comienza a decrementar en 1 por cada ingesta.
         this.cant_ingestas_cons++;
@@ -47,10 +48,10 @@ public class MascotaVirtual {
         // en 10% de la energía que tiene la mascota y incrementa el humor en 1 nivel.
         double incremento = (double) ( this.energia * 0.1);
         this.energia += incremento;
-
+        return true;
     }
 
-    public void beber(){
+    public boolean beber(){
         // A partir de la 3 ingesta consecutiva el nivel de humor
         // comienza a decrementar en 1 por cada ingesta.
         if (cant_ingestas_cons >= 3){
@@ -63,41 +64,47 @@ public class MascotaVirtual {
         // en 5% de la energía que tiene la mascota y incrementa el humor en 1 nivel.
         double incremento = (double) ( this.energia * 0.05);
         this.energia += incremento;
+        return true;
     }
+
     // DE ACTIVIDADES
 
-    public void correr(){
+    public boolean correr(){
         //decrementa la energía en un 35% de la energía que tiene la mascota.
         // Y decrementa el humor en 2 niveles.
         double decremento = (double) (this.energia * 0.35);
         this.energia -= decremento;
         int decremento_humor = 2;
         this.humor -= decremento_humor;
+        return true;
     }
-    public void saltar(){
+
+    public boolean saltar(){
         //decrementa la energía en un 15% de la energía que tiene la mascota.
         // Y decrementa el humor en 2 niveles.
         double decremento = (double) (this.energia * 0.15);
         this.energia -= decremento;
         int decremento_humor = 2;
         this.humor += decremento_humor;
+        return true;
     }
     // OTROS COMPORTAMIENTOS
 
-    public void dormir(){
+    public boolean dormir(){
         //la mascota pasa a estado durmiendo y no responde a ningún otro comportamiento excepto despertar.
         // Además la energía se incrementa en 25 unidades y el humor en 2 niveles.
         this.durmiendo = true;
         this.energia += 25;
         this.humor +=  2;
+        return true;
     }
 
-    public void despertar(){
+    public boolean despertar(){
         // la mascota pasa a estado despierta y comienza a responder a los demás comportamientos.
         // Además el humor se decrementa en un nivel.
         this.durmiendo = false;
         this.humor -= 1;
-        // hhhh
+        return true;
     }
 }
 /*
