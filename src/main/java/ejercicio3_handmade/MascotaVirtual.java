@@ -8,22 +8,37 @@ public class MascotaVirtual {
     private int humor;
     // Para resolver el que esté o no durmiendo
     private boolean durmiendo;
-    private int cant_ingestas;
+    private int cant_ingestas_cons;
+    private boolean viva;
     public MascotaVirtual(){
 
     }
-    public MascotaVirtual(int energia, int humor, boolean durmiendo,  int cant_ingestas) {
+    public MascotaVirtual(int energia, int humor, boolean durmiendo,  int cant_ingestas_cons,  boolean viva) {
         this.energia = energia;
         this.humor = humor;
         this.durmiendo = durmiendo;
-        this.cant_ingestas = cant_ingestas;
+        this.cant_ingestas_cons = cant_ingestas_cons;
+        this.viva = viva;
     }
+
+    private void evaluarEstado(){
+        if (this.energia <= 0){
+            this.energia = 0;
+            this.viva = false;
+        }
+        if ( this.humor > 5){
+            this.humor = 5;
+        }
+
+    }
+
     // DE INGESTA
 
     public void comer(){
         // A partir de la 3 ingesta consecutiva el nivel de humor
         // comienza a decrementar en 1 por cada ingesta.
-        if (cant_ingestas >= 3){
+        this.cant_ingestas_cons++;
+        if (cant_ingestas_cons >= 3){
             this.humor--;
         } else{
             this.humor++;
@@ -32,14 +47,22 @@ public class MascotaVirtual {
         // en 10% de la energía que tiene la mascota y incrementa el humor en 1 nivel.
         double incremento = (double) ( this.energia * 0.1);
         this.energia += incremento;
+
     }
 
     public void beber(){
+        // A partir de la 3 ingesta consecutiva el nivel de humor
+        // comienza a decrementar en 1 por cada ingesta.
+        if (cant_ingestas_cons >= 3){
+            this.humor--;
+        } else{
+            this.humor++;
+        }
+
         //incrementa la energía (que es un número entre 0 y 100 unidades)
         // en 5% de la energía que tiene la mascota y incrementa el humor en 1 nivel.
         double incremento = (double) ( this.energia * 0.05);
         this.energia += incremento;
-        this.humor++;
     }
     // DE ACTIVIDADES
 

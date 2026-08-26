@@ -108,6 +108,9 @@ public class Mascota {
         } else {
             this.humor++;
         }
+        if (this.ingestasConsecutivas >= 5){
+            this.viva = false;
+        }
 
         evaluarEstado();
 
