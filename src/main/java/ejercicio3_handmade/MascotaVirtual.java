@@ -31,6 +31,9 @@ public class MascotaVirtual {
 public boolean comer(){
         // A partir de la 3 ingesta consecutiva el nivel de humor
         // comienza a decrementar en 1 por cada ingesta.
+        if (!this.viva || this.durmiendo) {
+            return false;
+        }
         this.cant_ingestas_cons++;
         this.cant_actividades_consecutivas = 0;
         if (cant_ingestas_cons >= 3){
@@ -52,6 +55,9 @@ public boolean comer(){
     public boolean beber(){
         // A partir de la 3 ingesta consecutiva el nivel de humor
         // comienza a decrementar en 1 por cada ingesta.
+        if (!this.viva || this.durmiendo) {
+            return false;
+        }
         this.cant_ingestas_cons++;
         this.cant_actividades_consecutivas = 0;
         if (cant_ingestas_cons >= 3){
@@ -76,6 +82,9 @@ public boolean comer(){
     public boolean correr(){
         //decrementa la energía en un 35% de la energía que tiene la mascota.
         // Y decrementa el humor en 2 niveles.
+        if (!this.viva || this.durmiendo) {
+            return false;
+        }
         this.cant_ingestas_cons = 0;
         if (this.cant_actividades_consecutivas == 3){
             this.durmiendo = true;
@@ -90,6 +99,9 @@ public boolean comer(){
     public boolean saltar(){
         //decrementa la energía en un 15% de la energía que tiene la mascota.
         // Y decrementa el humor en 2 niveles.
+        if (!this.viva || this.durmiendo) {
+            return false;
+        }
         this.cant_ingestas_cons = 0;
         if (this.cant_actividades_consecutivas == 3) {
             this.durmiendo = true;
@@ -105,6 +117,9 @@ public boolean comer(){
     public boolean dormir(){
         //la mascota pasa a estado durmiendo y no responde a ningún otro comportamiento excepto despertar.
         // Además la energía se incrementa en 25 unidades y el humor en 2 niveles.
+        if (!this.viva || this.durmiendo) {
+            return false;
+        }
         this.cant_ingestas_cons = 0;
         this.cant_actividades_consecutivas = 0;
         this.durmiendo = true;
@@ -126,12 +141,8 @@ public boolean comer(){
         return true;
     }
 }
-/*
-Agregar además el comportamiento toString que devuelva una representación de cadena de la mascota incluyendo su nombre, unidades de energía, nivel de alegría, si duerme y si vive.
-Notas:
+/*Notas:
 1. la energía no puede superar 100 unidades, es decir si está en 100 no aumenta y si baja de cero la mascota muere y ya no responde más a ningún comportamiento.
-3. cuando la mascota está en un estado que no responde a cierto comportamiento el mismo debe retornar false y si el comportamiento se pudo realizar correctamente retorna true.
-
  */
 
 
