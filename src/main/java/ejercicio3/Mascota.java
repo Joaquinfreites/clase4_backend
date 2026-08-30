@@ -102,7 +102,9 @@ public class Mascota {
         if (this.energia > 100) {
             this.energia = 100;
         }
-
+        if (this.energia == 0){
+            this.viva = false;
+        }
         if (this.ingestasConsecutivas >= 3) {
             this.humor--;
         } else {

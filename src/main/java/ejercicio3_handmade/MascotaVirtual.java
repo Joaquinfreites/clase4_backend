@@ -49,7 +49,14 @@ public boolean comer(){
         // en 10% de la energía que tiene la mascota y incrementa el humor en 1 nivel.
         double incremento = (double) ( this.energia * 0.1);
         this.energia += incremento;
+        if (this.energia >= 100){
+            this.energia = 100;
+        }
+        if (this.energia < 0){
+            this.viva = false;
+        }
         return true;
+
     }
 
     public boolean beber(){
@@ -74,6 +81,12 @@ public boolean comer(){
         // en 5% de la energía que tiene la mascota y incrementa el humor en 1 nivel.
         double incremento = (double) ( this.energia * 0.05);
         this.energia += incremento;
+        if (this.energia >= 100){
+            this.energia = 100;
+        }
+        if (this.energia < 0){
+            this.viva = false;
+        }
         return true;
     }
 
@@ -93,6 +106,12 @@ public boolean comer(){
         this.energia -= decremento;
         int decremento_humor = 2;
         this.humor -= decremento_humor;
+        if (this.energia >= 100){
+            this.energia = 100;
+        }
+        if (this.energia < 0){
+            this.viva = false;
+        }
         return true;
     }
 
@@ -110,6 +129,12 @@ public boolean comer(){
         this.energia -= decremento;
         int decremento_humor = 2;
         this.humor += decremento_humor;
+        if (this.energia >= 100){
+            this.energia = 100;
+        }
+        if (this.energia < 0){
+            this.viva = false;
+        }
         return true;
     }
     // OTROS COMPORTAMIENTOS
@@ -125,6 +150,12 @@ public boolean comer(){
         this.durmiendo = true;
         this.energia += 25;
         this.humor +=  2;
+        if (this.energia >= 100){
+            this.energia = 100;
+        }
+        if (this.energia < 0){
+            this.viva = false;
+        }
         return true;
     }
 
@@ -138,11 +169,14 @@ public boolean comer(){
         }
         this.durmiendo = false;
         this.humor -= 1;
+        if (this.energia >= 100){
+            this.energia = 100;
+        }
+        if (this.energia < 0){
+            this.viva = false;
+        }
         return true;
     }
 }
-/*Notas:
-1. la energía no puede superar 100 unidades, es decir si está en 100 no aumenta y si baja de cero la mascota muere y ya no responde más a ningún comportamiento.
- */
 
 
